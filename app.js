@@ -15,7 +15,14 @@ const layout = require('./views/layout')
 
 app.get('/', (req, res) => {
     // res.send()
-    res.send(layout('Hello World'));
+    res.redirect('/wiki');
 })
+
+const wikiRouter = require('./routes/wiki');
+const userRouter = require('./routes/user');
+// ...
+app.use('/wiki', wikiRouter);
+app.use('/user', userRouter)
+// or, in one line: app.use('/wiki', require('./routes/wiki'));
 
 module.exports = app
